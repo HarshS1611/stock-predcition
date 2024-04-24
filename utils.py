@@ -13,9 +13,9 @@ from keras.layers import Dropout
 from keras.layers import LSTM
 import numpy as np
 from datetime import datetime
-import os
-os.environ['MPLBACKEND'] = 'Agg'
+import matplotlib
 import matplotlib.pyplot as plt
+matplotlib.use("Agg") 
 import math, random
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
@@ -52,6 +52,14 @@ def LR(data_frame, input1):
 
     y_test_prediction = clf.predict(X_test)
     y_test_prediction = y_test_prediction * (1.04)
+    import matplotlib.pyplot as plot
+    fig = plot.figure(figsize=(7.2,4.8),dpi=65)
+    plot.plot(y_test,label='Actual Price' )
+    plot.plot(y_test_prediction,label='Predicted Price')
+        
+    plot.legend(loc=4)
+    plot.savefig('static/LR.png')
+    plot.close(fig)
 
     lr_error = math.sqrt(mean_squared_error(y_test, y_test_prediction))
 
@@ -94,12 +102,30 @@ def ARIMA(data_frame, input1):
         Quantity_date['Price'] = Quantity_date['Price'].map(lambda x: float(x))
         Quantity_date = Quantity_date.fillna(Quantity_date.bfill())
         Quantity_date = Quantity_date.drop(['Date'], axis=1)
+        fig = plt.figure(figsize=(7.2,4.8),dpi=65)
+        plt.plot(Quantity_date)
+        plt.savefig('static/Trends.png')
+        plt.close(fig)
+        plt.figure(figsize=(7.2, 4.8), dpi=65)
+        plt.plot(data_frame['Date'], data_frame['Close'], label='Closing Price')
+        plt.title(f'{input1} Stock Price Trend')
+        plt.xlabel('Date')
+        plt.ylabel('Closing Price')
+        plt.legend()
+        plt.savefig('static/StockPriceTrend.png')
 
         quantity = Quantity_date.values
         size = int(len(quantity) * 0.80)
         train, test = quantity[0:size], quantity[size:len(quantity)]
 
         predictions = arima_model(train, test)
+        fig = plt.figure(figsize=(7.2,4.8),dpi=65)
+        plt.plot(test,label='Actual Price')
+        plt.plot(predictions,label='Predicted Price')
+        plt.legend(loc=4)
+        plt.savefig('static/ARIMA.png')
+        plt.close(fig)
+        print()
 
         arima_prediction = predictions[-2]
         print("Tomorrow's", input1, " Closing Price Prediction by ARIMA:", arima_prediction)
@@ -176,6 +202,13 @@ def LSTM(data_frame, input1):
     predicted_stock_price = regressor.predict(X_test)
 
     predicted_stock_price = sc.inverse_transform(predicted_stock_price)
+    fig = plt.figure(figsize=(7.2,4.8),dpi=65)
+    plt.plot(real_stock_price,label='Actual Price')  
+    plt.plot(predicted_stock_price,label='Predicted Price')
+          
+    plt.legend(loc=4)
+    plt.savefig('static/LSTM.png')
+    plt.close(fig)
 
     lstm_error = math.sqrt(mean_squared_error(real_stock_price, predicted_stock_price))
 
