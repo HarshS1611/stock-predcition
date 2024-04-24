@@ -1,0 +1,92 @@
+.searchbox
+{
+	position: absolute;
+	top: 45%;
+	left: 48%;
+	transform: translate(-50%,-50%);
+	width: 345px;
+	height: 50px;
+	box-sizing: border-box;
+	background: rgba(0,0,0,.5);
+	outline: none;
+	color: blue;
+	font-weight: 700 ;
+	color: blue;
+	font-size: 18px;
+	font-family: Comic Sans MS;
+}
+
+body {
+	background-image: url('background.png');
+	height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+
+.submit
+{
+	position: absolute;
+	top: 45%;
+	left: 63%;
+	transform: translate(-50%,-50%);
+	width: 95px;
+	height: 50px;
+	box-sizing: border-box;
+	background: rgba(0,0,0,.5);
+	outline: none;	
+	font-weight:700 ;
+	color: blue;
+	font-size: 18px;
+	font-family: Comic Sans MS;
+}
+
+
+.bottombar
+{
+	position: absolute;
+	top:95%;
+	outline: none;	
+	font-weight:700 ;
+	color: orange;
+	font-size: 18px;
+	text-decoration: none;
+}
+
+.column {
+	float: left;
+	width: 25%;
+	padding: 20px 40px;
+  }
+
+  .column1 {
+	float: left;
+	width: 100%;
+	text-align: center;
+	padding: 20px 40px;
+  }
+
+
+.card {
+	padding: 20px;
+	text-align: center;
+}
+
+.card1{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+.row {margin: 0 -5px;}
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+h1 {text-align: center;}

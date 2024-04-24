@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title> Web Based Stcok Market Predition in Real Time </title>
+		<link rel="stylesheet" href="../static/style.css">
+	</head>
+
+
+
+	<body>
+
+		<h1>Prediction Results</h1>
+		<div class="row">
+			<div class="column">
+			  <div class="card1">
+				<h3>Open</h3>
+				<p>{{open_stock}}</p>
+			
+			  </div>
+			</div>
+		  
+			<div class="column">
+			  <div class="card1">
+				<h3>High</h3>
+				<p>{{high_stock}}</p>
+			
+			  </div>
+			</div>
+			
+			<div class="column">
+			  <div class="card1">
+				<h3>Low</h3>
+				<p>{{low_stock}}</p>
+				
+			  </div>
+			</div>
+			
+			<div class="column">
+			  <div class="card1">
+				<h3>Close</h3>
+				<p>{{close_stock}}</p>
+			  </div>
+			</div>
+
+			<div class="column">
+				<div class="card1">
+				  <h3>Adjacent Close</h3>
+				  <p>{{adj_close}}</p>
+				</div>
+			  </div>
+
+			  <div class="column">
+				<div class="card1">
+				  <h3>Volume</h3>
+				  <p>{{vol}}</p>
+				</div>
+			  </div>
+		  </div>
+
+
+		<div class="row">
+		<div class="column">
+			<div class="card">
+				<img src="{{url_for('static', filename='Trends.png')}}" />
+				<div class="container">
+				  <h4><b>Stock History</b></h4>
+				</div>
+			</div>
+		</div>
+
+	
+			<div class="card">
+				<img src="{{url_for('static', filename='LR.png')}}" />
+				<div class="container">
+				  <h4><b>Linear Regression Model</b></h4>
+				</div>
+			</div>
+		</div>
+	
+
+
+	
+			<div class="card">
+				<img src="{{url_for('static', filename='LSTM.png')}}" />
+				<div class="container">
+				  <h4><b>Long Short Term Memory Model</b></h4>
+				</div>
+			  </div>
+			</div>
+
+			
+			<div class="card">
+				<img src="{{url_for('static', filename='ARIMA.png')}}" />
+				<div class="container">
+				  <h4><b>Autoregressive Integrated Moving Averag Model</b></h4>
+				</div>
+			  </div>
+			
+			
+	
+			  <div class="card">
+				<img src="{{url_for('static', filename='SA.png')}}" />
+				<div class="container">
+				  <h4><b>Sentimental Analysis</b></h4>
+				</div>
+			  <div>
+			  </div>
+			  </div>
+			  
+				
+
+				<div class="row">
+					<div class="column">
+					  <div class="card1">
+						<h3>Linear Regression Prediction</h3>
+						<p>{{lr_prediction}}</p>
+					
+					  </div>
+					</div>
+				  
+					<div class="column">
+					  <div class="card1">
+						<h3>Long Short Term Memory Prediction</h3>
+						<p>{{lstm_prediction}}</p>
+					
+					  </div>
+					</div>
+					
+					<div class="column">
+					  <div class="card1">
+						<h3>Autoregressive Integrated Moving Average Prediction</h3>
+						<p>{{arima_prediction}}</p>
+						
+					  </div>
+					</div>
+					
+					<div class="column">
+					  <div class="card1">
+						<h3>Linear Regression Error</h3>
+						<p>{{lr_error}}</p>
+					  </div>
+					</div>
+		
+					<div class="column">
+						<div class="card1">
+						  <h3>Long Short Term Memory Error</h3>
+						  <p>{{lstm_error}}</p>
+						</div>
+					  </div>
+		
+					  <div class="column">
+						<div class="card1">
+						  <h3>Autoregressive Integrated Moving Average Error</h3>
+						  <p>{{arima_error}}</p>
+						</div>
+					  </div>
+				  </div>
+
+			<div class="row">
+			
+				  <div class="column">
+					<div class="card1">
+					  <h3>Sentimental Analysis</h3>
+					  <p>{{tweet_polarity}}</p>
+					</div>
+				  </div>
+
+				  <div class="column1">
+					<div class="card1">
+					  <h3>Tweets</h3>
+					  {% for tweet in tweet_list %}
+					  <p>{{ tweet }} </p>
+						  {% endfor %}
+					</div>
+					<h1>According to the LR, ARIMA, LSTM Predictions and Sentiment Analysis of Tweets, a {{idea}} in {{quote}} stock is expected so you should {{decision}} it.</h1>
+
+				  </div>
+
+				
+            </div>
+		
+
+		
+	
+
+		
+	</body>
+
+</html>
